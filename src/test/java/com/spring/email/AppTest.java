@@ -1,4 +1,4 @@
-package com.spring.sendemail;
+package com.spring.email;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
