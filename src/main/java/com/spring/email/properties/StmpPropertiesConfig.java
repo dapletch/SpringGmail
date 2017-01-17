@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
  */
 @Configuration
 @ComponentScan(basePackages = "com.spring.email.*")
-@PropertySource("file:src/main/resources/stmp.properties")
+@PropertySource("file:src/main/resources/smtp.properties")
 public class StmpPropertiesConfig {
 
     private Environment env;
@@ -26,6 +26,7 @@ public class StmpPropertiesConfig {
     public StmpProperties getStmpProperties() {
         return new StmpProperties(env.getProperty("smtp.host"), env.getProperty("smtp.port")
                 , env.getProperty("smtp.username"), env.getProperty("smtp.password")
-                , env.getProperty("smtp.auth"), env.getProperty("smtp.starttls.enable"));
+                , env.getProperty("smtp.auth"), env.getProperty("smtp.starttls.enable")
+                , env.getProperty("smtp.transport.protocol"), env.getProperty("smtp.debug"));
     }
 }

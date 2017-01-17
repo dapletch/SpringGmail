@@ -3,6 +3,8 @@ package com.spring.email;
 import com.spring.email.messagebody.MessageBody;
 import com.spring.email.properties.StmpProperties;
 import com.spring.email.properties.StmpPropertiesConfig;
+import com.spring.email.sendemail.EmailConfig;
+import com.spring.email.sendemail.SendEmail;
 import com.spring.email.utils.EmailUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.ApplicationContext;
@@ -17,21 +19,24 @@ import java.io.File;
 public class App {
 
     private static Logger logger = Logger.getLogger(App.class);
-
-    private static MessageBody messageBody;
+    private static MessageBody messageBody = new MessageBody();
 
     public static void main(String[] args) {
         // Need to validate arguments
-        ApplicationContext context = new AnnotationConfigApplicationContext(StmpPropertiesConfig.class);
-        StmpProperties stmpProperties = context.getBean(StmpProperties.class);
-        logger.info(stmpProperties.toString());
-
         // The bare minimum to be able to use this program to, subject, and message
         if (EmailUtils.isMessageBodyValid(args[0], args[1], args[2])) {
-            if (EmailUtils.isFileValid(new File(args[3]))) {
-                messageBody = new MessageBody(args[0], args[1], args[2], new File(args[3]));
+            File attachment = null;
+            if (args.length == 4) {
+                attachment = new File(args[3]);
+            }
+            ApplicationContext context = new AnnotationConfigApplicationContext(EmailConfig.class);
+            SendEmail sendEmail = context.getBean(SendEmail.class);
+            if (EmailUtils.isFileValid(attachment)) {
+                messageBody = new MessageBody(args[0], args[1], args[2], attachment);
+                sendEmail.sendEmailWithAttachment(messageBody);
             } else {
                 messageBody = new MessageBody(args[0], args[1], args[2]);
+                sendEmail.sendEmailNoAttachment(messageBody);
             }
         } else {
             logger.error("In order to run this program, please enter the following arguments: \n" +

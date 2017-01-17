@@ -1,5 +1,7 @@
 package com.spring.email.properties;
 
+import java.util.Properties;
+
 /**
  * Created by Seth on 1/12/2017.
  */
@@ -9,21 +11,27 @@ public class StmpProperties {
     private String port;
     private String username;
     private String password;
-    private String auth;
-    private String starttlsEnable;
+    private String authentication;
+    private String startTlsEnable;
+    private String transportProtocol;
+    private String mailDebug;
 
     public StmpProperties() {
         super();
     }
 
-    public StmpProperties(String host, String port, String username, String password, String auth, String starttlsEnable) {
+    public StmpProperties(String host, String port
+            , String username, String password
+            , String authentication, String startTlsEnable
+            , String transportProtocol, String mailDebug) {
         this.host = host;
         this.port = port;
-        // The username and password will act as the from portion in the email the to portion will need to be changed on the fly
         this.username = username;
         this.password = password;
-        this.auth = auth;
-        this.starttlsEnable = starttlsEnable;
+        this.authentication = authentication;
+        this.startTlsEnable = startTlsEnable;
+        this.transportProtocol = transportProtocol;
+        this.mailDebug = mailDebug;
     }
 
     public String getHost() {
@@ -58,20 +66,36 @@ public class StmpProperties {
         this.password = password;
     }
 
-    public String getAuth() {
-        return auth;
+    public String getAuthentication() {
+        return authentication;
     }
 
-    public void setAuth(String auth) {
-        this.auth = auth;
+    public void setAuthentication(String authentication) {
+        this.authentication = authentication;
     }
 
-    public String getStarttlsEnable() {
-        return starttlsEnable;
+    public String getStartTlsEnable() {
+        return startTlsEnable;
     }
 
-    public void setStarttlsEnable(String starttlsEnable) {
-        this.starttlsEnable = starttlsEnable;
+    public void setStartTlsEnable(String startTlsEnable) {
+        this.startTlsEnable = startTlsEnable;
+    }
+
+    public String getTransportProtocol() {
+        return transportProtocol;
+    }
+
+    public void setTransportProtocol(String transportProtocol) {
+        this.transportProtocol = transportProtocol;
+    }
+
+    public String getMailDebug() {
+        return mailDebug;
+    }
+
+    public void setMailDebug(String mailDebug) {
+        this.mailDebug = mailDebug;
     }
 
     @Override
@@ -81,8 +105,10 @@ public class StmpProperties {
                 ", port='" + port + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", auth=" + auth +
-                ", starttlsEnable=" + starttlsEnable +
+                ", authentication='" + authentication + '\'' +
+                ", startTlsEnable='" + startTlsEnable + '\'' +
+                ", transportProtocol='" + transportProtocol + '\'' +
+                ", mailDebug='" + mailDebug + '\'' +
                 '}';
     }
 }

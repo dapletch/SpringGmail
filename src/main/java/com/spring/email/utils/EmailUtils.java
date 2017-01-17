@@ -12,7 +12,8 @@ public class EmailUtils {
     }
 
     public static Boolean isFileValid(File file) {
-        return file.exists()
+        return file != null
+                && file.exists()
                 && !file.isDirectory()
                 && file.isFile();
     }
