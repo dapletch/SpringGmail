@@ -12,7 +12,7 @@ import org.springframework.core.env.Environment;
  */
 @Configuration
 @ComponentScan(basePackages = "com.spring.email.*")
-@PropertySource("file:src/main/resources/smtp.properties")
+@PropertySource("classpath:smtp.properties")
 public class StmpPropertiesConfig {
 
     private Environment env;
