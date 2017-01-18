@@ -1,8 +1,8 @@
 package com.spring.email;
 
 import com.spring.email.messagebody.MessageBody;
-import com.spring.email.properties.StmpProperties;
-import com.spring.email.properties.StmpPropertiesConfig;
+import com.spring.email.properties.SmtpProperties;
+import com.spring.email.properties.SmtpPropertiesConfig;
 import com.spring.email.sendemail.EmailConfig;
 import com.spring.email.sendemail.SendEmail;
 import com.spring.email.utils.EmailUtils;

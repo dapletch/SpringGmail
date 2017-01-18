@@ -5,7 +5,7 @@ import java.util.Properties;
 /**
  * Created by Seth on 1/12/2017.
  */
-public class StmpProperties {
+public class SmtpProperties {
 
     private String host;
     private String port;
@@ -16,11 +16,11 @@ public class StmpProperties {
     private String transportProtocol;
     private String mailDebug;
 
-    public StmpProperties() {
+    public SmtpProperties() {
         super();
     }
 
-    public StmpProperties(String host, String port
+    public SmtpProperties(String host, String port
             , String username, String password
             , String authentication, String startTlsEnable
             , String transportProtocol, String mailDebug) {
@@ -100,7 +100,7 @@ public class StmpProperties {
 
     @Override
     public String toString() {
-        return "StmpProperties{" +
+        return "SmtpProperties{" +
                 "host='" + host + '\'' +
                 ", port='" + port + '\'' +
                 ", username='" + username + '\'' +

@@ -13,18 +13,18 @@ import org.springframework.core.env.Environment;
 @Configuration
 @ComponentScan(basePackages = "com.spring.email.*")
 @PropertySource("classpath:smtp.properties")
-public class StmpPropertiesConfig {
+public class SmtpPropertiesConfig {
 
     private Environment env;
 
     @Autowired
-    public StmpPropertiesConfig(Environment env) {
+    public SmtpPropertiesConfig(Environment env) {
         this.env = env;
     }
 
     @Bean
-    public StmpProperties getStmpProperties() {
-        return new StmpProperties(env.getProperty("smtp.host"), env.getProperty("smtp.port")
+    public SmtpProperties getStmpProperties() {
+        return new SmtpProperties(env.getProperty("smtp.host"), env.getProperty("smtp.port")
                 , env.getProperty("smtp.username"), env.getProperty("smtp.password")
                 , env.getProperty("smtp.auth"), env.getProperty("smtp.starttls.enable")
                 , env.getProperty("smtp.transport.protocol"), env.getProperty("smtp.debug"));

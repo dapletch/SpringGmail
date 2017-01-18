@@ -1,13 +1,12 @@
 package com.spring.email.sendemail;
 
-import com.spring.email.properties.StmpProperties;
+import com.spring.email.properties.SmtpProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.stereotype.Service;
 
 import java.util.Properties;
 
@@ -19,22 +18,22 @@ import java.util.Properties;
 public class EmailConfig {
 
     @Autowired
-    private StmpProperties stmpProperties;
+    private SmtpProperties smtpProperties;
 
     @Bean
     public JavaMailSender javaMailService() {
         JavaMailSenderImpl javaMailSender = new JavaMailSenderImpl();
 
-        javaMailSender.setHost(stmpProperties.getHost());
-        javaMailSender.setPort(Integer.parseInt(stmpProperties.getPort()));
-        javaMailSender.setUsername(stmpProperties.getUsername());
-        javaMailSender.setPassword(stmpProperties.getPassword());
+        javaMailSender.setHost(smtpProperties.getHost());
+        javaMailSender.setPort(Integer.parseInt(smtpProperties.getPort()));
+        javaMailSender.setUsername(smtpProperties.getUsername());
+        javaMailSender.setPassword(smtpProperties.getPassword());
 
         Properties javaMailProperties = new Properties();
-        javaMailProperties.put("mail.smtp.auth", stmpProperties.getAuthentication());
-        javaMailProperties.put("mail.smtp.starttls.enable", stmpProperties.getStartTlsEnable());
-        javaMailProperties.put("mail.transport.protocol", stmpProperties.getTransportProtocol());
-        javaMailProperties.put("mail.debug", stmpProperties.getMailDebug());
+        javaMailProperties.put("mail.smtp.auth", smtpProperties.getAuthentication());
+        javaMailProperties.put("mail.smtp.starttls.enable", smtpProperties.getStartTlsEnable());
+        javaMailProperties.put("mail.transport.protocol", smtpProperties.getTransportProtocol());
+        javaMailProperties.put("mail.debug", smtpProperties.getMailDebug());
         javaMailSender.setJavaMailProperties(javaMailProperties);
         javaMailSender.setJavaMailProperties(javaMailProperties);
         return javaMailSender;

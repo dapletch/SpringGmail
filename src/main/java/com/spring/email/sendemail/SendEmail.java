@@ -1,7 +1,7 @@
 package com.spring.email.sendemail;
 
 import com.spring.email.messagebody.MessageBody;
-import com.spring.email.properties.StmpProperties;
+import com.spring.email.properties.SmtpProperties;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,7 +28,7 @@ public class SendEmail {
     private JavaMailSender mailSender;
 
     @Autowired
-    private StmpProperties stmpProperties;
+    private SmtpProperties smtpProperties;
 
     public void sendEmailNoAttachment(MessageBody messageBody) {
         SimpleMailMessage message = new SimpleMailMessage();
@@ -42,7 +42,7 @@ public class SendEmail {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         try {
             MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
-            helper.setFrom(stmpProperties.getUsername());
+            helper.setFrom(smtpProperties.getUsername());
             helper.setTo(messageBody.getTo());
             helper.setSubject(messageBody.getSubject());
             helper.setText(messageBody.getMessage());
