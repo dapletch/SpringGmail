@@ -1,5 +1,6 @@
 package com.spring.email.utils;
 
+import org.apache.commons.validator.routines.EmailValidator;
 import java.io.File;
 
 /**
@@ -22,5 +23,9 @@ public class EmailUtils {
         return isStringValid(to)
                 && isStringValid(subject)
                 && isStringValid(message);
+    }
+
+    public static Boolean isEmailValid(String email) {
+        return EmailValidator.getInstance().isValid(email);
     }
 }
