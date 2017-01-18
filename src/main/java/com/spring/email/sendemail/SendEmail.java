@@ -49,6 +49,7 @@ public class SendEmail {
             // Adding the attachment
             FileSystemResource attachment = new FileSystemResource(messageBody.getAttachment());
             helper.addAttachment(attachment.getFilename(), attachment);
+            mailSender.send(mimeMessage);
         } catch (MessagingException e) {
             logger.error("There was an error sending the email: ", e);
         }
