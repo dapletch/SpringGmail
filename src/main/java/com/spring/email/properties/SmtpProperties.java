@@ -1,7 +1,5 @@
 package com.spring.email.properties;
 
-import java.util.Properties;
-
 /**
  * Created by Seth on 1/12/2017.
  */

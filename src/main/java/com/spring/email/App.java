@@ -1,8 +1,6 @@
 package com.spring.email;
 
 import com.spring.email.messagebody.MessageBody;
-import com.spring.email.properties.SmtpProperties;
-import com.spring.email.properties.SmtpPropertiesConfig;
 import com.spring.email.sendemail.EmailConfig;
 import com.spring.email.sendemail.SendEmail;
 import com.spring.email.utils.EmailUtils;
@@ -13,9 +11,6 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.io.File;
 import java.util.Arrays;
 
-/**
- * Hello world!
- */
 public class App {
 
     private static Logger logger = Logger.getLogger(App.class);
@@ -25,7 +20,7 @@ public class App {
         // Need to validate arguments
         if (args.length >= 3) {
             // The bare minimum to be able to use this program to, subject, and message
-            if (EmailUtils.isMessageBodyValid(args[0], args[1], args[2]) && EmailUtils.isEmailValid(args[1])) {
+            if (EmailUtils.isMessageBodyValid(args[0], args[1], args[2]) && EmailUtils.isEmailValid(args[0])) {
                 File attachment = null;
                 if (args.length == 4) {
                     attachment = new File(args[3]);

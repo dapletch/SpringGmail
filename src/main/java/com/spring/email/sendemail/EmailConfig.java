@@ -35,7 +35,6 @@ public class EmailConfig {
         javaMailProperties.put("mail.transport.protocol", smtpProperties.getTransportProtocol());
         javaMailProperties.put("mail.debug", smtpProperties.getMailDebug());
         javaMailSender.setJavaMailProperties(javaMailProperties);
-        javaMailSender.setJavaMailProperties(javaMailProperties);
         return javaMailSender;
     }
 }
